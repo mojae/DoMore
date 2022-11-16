@@ -1,3 +1,8 @@
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --family-serif: "DM Serif Display", serif;
     --family-sans-serif: "Inter", -apple-system, "BlinkMacSystemFont", "Segoe UI",

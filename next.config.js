@@ -8,4 +8,5 @@ module.exports = {
     password: process.env.DIRECTUS_PASSWORD,
     // token: process.env.DIRECTUS_STATIC_TOKEN,
   },
+  swcMinify: true,
 };

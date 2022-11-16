@@ -4,12 +4,23 @@ import { getDirectusClient } from "../lib/directus";
 import { formatRelativeTime } from "../utils/format-relative-time";
 import { Directus } from "@directus/sdk";
 import getConfig from "next/config";
+import { SpreadsheetComponent } from '@syncfusion/ej2-react-spreadsheet';
+import { registerLicense } from '@syncfusion/ej2-base';
+
+registerLicense(
+  'ORg4AjUWIQA/Gnt2VVhjQlFaclhJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRd0RiXH1cdHJQT2BVVkw='
+);
 
 export default function Home({ projects }) {
   return (
-    <main>
+    <div className="min-h-full"><SpreadsheetComponent></SpreadsheetComponent></div>
+    
+    /* <main className="min-h-screen">
       <section className="main-content">
         <div className="container">
+        <h1 className="text-9xl font-bold underline">
+         Hello world!
+         </h1>
           <div className="articles-grid">
             {projects.map((project, index) => (
               <div key={index}>
@@ -17,10 +28,11 @@ export default function Home({ projects }) {
               </div>
             ))}
           </div>
+          
           <h1>Do More Project</h1>
         </div>
       </section>
-    </main>
+    </main> */
   );
 }
 
