@@ -7,9 +7,8 @@ export default function Header() {
         <a href="/">
           <IconMonospace />
         </a>
-        <span className="header__description">
-          An example site powered by <span className="accent">Next.js</span> and{" "}
-          <span className="accent">Directus</span>.
+        <span className="text-blue-900 extra-bold text-5xl">
+          Do More Proof Of Concept 
         </span>
       </nav>
     </header>

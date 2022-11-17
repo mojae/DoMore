@@ -6,21 +6,42 @@ import { Directus } from "@directus/sdk";
 import getConfig from "next/config";
 import { SpreadsheetComponent } from '@syncfusion/ej2-react-spreadsheet';
 import { registerLicense } from '@syncfusion/ej2-base';
+import { GanttComponent, Edit, Inject, Selection, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-gantt';
+import { projectNewData } from '../data';
 
 registerLicense(
   'ORg4AjUWIQA/Gnt2VVhjQlFaclhJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRd0RiXH1cdHJQT2BVVkw='
 );
 
 export default function Home({ projects }) {
+  var taskFields = {
+    id: 'TaskID',
+    name: 'TaskName',
+    startDate: 'StartDate',
+    endDate: 'EndDate',
+    duration: 'Duration',
+    progress: 'Progress',
+    dependency: 'Predecessor',
+    child: 'subtasks'
+};
+var labelSettings = {
+    leftLabel: 'TaskName'
+};
+var  editOptions = {
+  allowEditing: true,
+  allowAdding: true,
+  mode: 'Dialog'
+};
+
+var projectStartDate = new Date('03/24/2019');
+var projectEndDate = new Date('07/06/2019');
   return (
-    <div className="min-h-full"><SpreadsheetComponent></SpreadsheetComponent></div>
     
-    /* <main className="min-h-screen">
-      <section className="main-content">
-        <div className="container">
-        <h1 className="text-9xl font-bold underline">
-         Hello world!
-         </h1>
+    
+    
+    <main className="">
+      
+        
           <div className="articles-grid">
             {projects.map((project, index) => (
               <div key={index}>
@@ -28,11 +49,26 @@ export default function Home({ projects }) {
               </div>
             ))}
           </div>
-          
-          <h1>Do More Project</h1>
+          <div className='control-pane p-10'>
+        <div className='control-section h-98'>
+          <GanttComponent allowRowDragAndDrop='true' id='Default' height={500} dataSource={projectNewData} treeColumnIndex={1} taskFields={taskFields} labelSettings={labelSettings}  projectStartDate={projectStartDate} projectEndDate={projectEndDate}
+          editSettings={editOptions}>
+              <ColumnsDirective>
+              <ColumnDirective field='TaskID' headerText='id' width='80'></ColumnDirective>
+              <ColumnDirective field='TaskName' headerText='Job Name' width='250' clipMode='EllipsisWithTooltip'></ColumnDirective>
+              <ColumnDirective field='StartDate'></ColumnDirective>
+              <ColumnDirective field='Duration'></ColumnDirective>
+              <ColumnDirective field='Progress'></ColumnDirective>
+              <ColumnDirective field='Predecessor'></ColumnDirective>
+              </ColumnsDirective>
+            <Inject services={[Edit,Selection]}/>
+          </GanttComponent>
         </div>
-      </section>
-    </main> */
+
+      </div>
+          
+        
+    </main> 
   );
 }
 
